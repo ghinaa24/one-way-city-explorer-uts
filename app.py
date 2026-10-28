@@ -38,7 +38,9 @@ st.info(
 
 BASE_DIR = Path(__file__).resolve().parent
 
+
 kemungkinan_file = [
+    BASE_DIR / "road_network_international.csv",
     BASE_DIR / "road_network.csv",
     BASE_DIR / "data" / "road_network_international.csv",
     BASE_DIR / "data" / "road_network.csv",
@@ -51,12 +53,13 @@ CSV_PATH = next(
 
 if CSV_PATH is None:
     st.error(
-        "File dataset tidak ditemukan. Pastikan file berada "
-        "di folder data dengan nama road_network.csv."
+        "File dataset tidak ditemukan. Pastikan file CSV "
+        "berada di folder utama aplikasi atau folder data."
     )
     st.stop()
 
 df = pd.read_csv(CSV_PATH)
+
 
 kolom_wajib = [
     "road_id",
